@@ -11,7 +11,8 @@
         "filament/filament": "^3.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "openspout/openspout": "^4.26"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -52,9 +52,11 @@ class ManageAnggotas extends ManageRecords
         return [
             'all' => Tab::make(),
             'Pengurus' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'Pengurus')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'pengurus')),
             'Anggota' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'Anggota')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'anggota')),
+            'Alumni' => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'alumni')),
         ];
     }
 }

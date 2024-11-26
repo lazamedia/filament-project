@@ -30,22 +30,32 @@ class UserResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+
                         TextInput::make('name')
                             ->required()
                             ->maxLength(255),
+
                         TextInput::make('email')
                             ->email()
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->unique(ignorable: fn($record) => $record)
+                            ->afterStateHydrated(function ($set, $state, $record) {
+                                if ($record && empty($state)) {
+                                    $set('email', $record->email); 
+                                }
+                            }),
+
                         TextInput::make('password')
                             ->password()
                             ->maxLength(255)
-                            ->dehydrateStateUsing(fn (string $state) => Hash::make($state))
-                            ->dehydrated(fn (?string $state): bool => filled($state))
-                            ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord),
-                            Select::make('roles')
-                                ->multiple()
-                                ->relationship('roles', 'name'),
+                            ->dehydrateStateUsing(fn (string $state) => Hash::make($state)) 
+                            ->dehydrated(fn (?string $state): bool => filled($state)) 
+                            ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord), 
+
+                        Select::make('roles')
+                            ->multiple()
+                            ->relationship('roles', 'name'),
                     ]),
             ]);
     }
@@ -95,6 +105,4 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
-
-
 }

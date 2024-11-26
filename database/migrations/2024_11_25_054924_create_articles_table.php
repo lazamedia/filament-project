@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('category_id')
                   ->constrained('categories')
-                  ->onDelete('cascade'); // Menghapus artikel jika kategori dihapus
+                  ->onDelete('cascade'); 
             $table->text('short_description')->nullable();
             $table->string('photo')->nullable();
             $table->text('content');

@@ -52,8 +52,8 @@ class AnggotaResource extends Resource
                         'alumni' => 'Alumni',
                         'tidak aktif' => 'Tidak Aktif',
                     ])
-                    ->default('anggota') // Menetapkan 'anggota' sebagai nilai default
-                    ->reactive(), // Opsional: membuat field reactive jika diperlukan
+                    ->default('anggota')
+                    ->reactive(),
             ]);
     }
 
@@ -82,7 +82,6 @@ class AnggotaResource extends Resource
                         'danger' => 'tidak aktif',
                     ])
                     ->formatStateUsing(function ($state) {
-                        // Mengonversi nilai status ke label yang ditampilkan
                         switch ($state) {
                             case 'anggota':
                                 return 'Anggota';

@@ -22,20 +22,26 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-queue-list';
 
+    protected static ?string $navigationLabel = 'Kategori Artikel';
+
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            TextInput::make('name')
-                ->required()
+            ->schema([
+                TextInput::make('name')
                 ->maxLength(255)
                 ->live(onBlur: true)
-                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
-            TextInput::make('slug')
-                ->required()
-                ->maxLength(255)
-                ->unique('categories', 'slug'),
-        ]);
+                ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                ->required(),
+                TextInput::make('slug')
+                ->unique(ignorable: fn($record) => $record)
+                ->afterStateHydrated(function ($set, $state, $record) {
+                    if ($record && empty($state)) {
+                        $set('slug', $record->slug); 
+                    }
+                })
+                ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -46,10 +52,11 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('slug'),
             ])
             ->filters([
-                //
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -58,19 +65,10 @@ class CategoryResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ManageCategories::route('/'),
         ];
     }
 }

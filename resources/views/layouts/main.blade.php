@@ -66,9 +66,6 @@
       gtag('js', new Date());
       gtag('config', 'G-E7LRBJ3G3L');
     </script>
-    <x-google-analytics id="G-E7LRBJ3G3L" />
-
-    
 </head>
 
 <body>

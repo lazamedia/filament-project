@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return redirect('/dashboard/login');
 });
+
+Route::get('/panel', function () {
+    return redirect('/dashboard');
+});

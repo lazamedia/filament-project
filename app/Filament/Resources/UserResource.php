@@ -55,6 +55,7 @@ class UserResource extends Resource
 
                         Select::make('roles')
                             ->multiple()
+                            ->default('roles', 'Anggota')
                             ->relationship('roles', 'name'),
                     ]),
             ]);

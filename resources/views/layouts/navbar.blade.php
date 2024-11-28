@@ -267,7 +267,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ url('/panel') }}">
                                 <i class="bi bi-house-door"></i>
                                 <div>
                                     <strong>Dashboard</strong>
@@ -293,7 +293,7 @@
                 </form>
             @else
                 <!-- If not logged in, show login and register links -->
-                <a href="#" class="login">Masuk</a>
+                <a href="{{ url('/login') }}" class="login">Masuk</a>
                 <a href="#" class="register">Daftar</a>
             @endif
           </div>

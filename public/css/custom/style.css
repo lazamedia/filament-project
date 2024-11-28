@@ -1,4 +1,9 @@
-h1{
-    color: rgb(104, 2, 73);
-    color: rgb(255, 255, 255);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .content-auto {
+      content-visibility: auto;
+    }
+  }

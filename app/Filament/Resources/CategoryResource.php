@@ -4,8 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
 use Filament\Forms;
+use App\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
+use App\Filament\Clusters\Kategori;
 
 class CategoryResource extends Resource
 {
@@ -23,6 +24,8 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-queue-list';
 
     protected static ?string $navigationLabel = 'Kategori Artikel';
+
+    protected static ?string $cluster = Kategori::class; 
 
     public static function form(Form $form): Form
     {

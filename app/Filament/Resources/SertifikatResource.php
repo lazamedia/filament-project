@@ -36,40 +36,47 @@ class SertifikatResource extends Resource
                         TextInput::make('name')
                             ->required()
                             ->label('Nama Lengkap')
+                            ->placeholder('Nama harus huruf besar semua')
                             ->maxLength(255),
                         TextInput::make('kegiatan')
                             ->required()
+                            ->placeholder('Judul acara')
                             ->label('Kegiatan')
                             ->maxLength(255),
 
                         Grid::make(2)
                             ->schema([
                                 Select::make('kode_sertifs_id')
-                                    ->label('Jenis Sertifikat')
-                                    ->relationship('kodeSertif', 'name')
-                                    ->required()
-                                    ->reactive()
-                                    ->afterStateUpdated(function ($state, $set) {
-                                        $kodeSertif = KodeSertif::find($state);
-                                        if ($kodeSertif) {
-                                       
-                                            $lastKode = Sertifikat::where('kode_sertifs_id', $state)
-                                                                ->latest('created_at')
-                                                                ->first();
-                                            
-                                            $nomor = $lastKode ? (intval(substr($lastKode->kode_sertifikat, 0, strpos($lastKode->kode_sertifikat, '/'))) + 1) : 1;
-    
-                                            $nomorFormatted = str_pad($nomor, 3, '0', STR_PAD_LEFT);
+                                ->label('Kategori Sertifikat')
+                                ->relationship('kodeSertif', 'name')
+                                ->required()
+                                ->reactive()
+                                ->afterStateUpdated(function ($state, $set) {
+                                    $kodeSertif = KodeSertif::find($state);
+                                    if ($kodeSertif) {
 
-                                            $kodeSertifikat = "{$nomorFormatted}/{$kodeSertif->kode}/UKMCYBER/" . now()->year;
-    
-                                            $set('kode_sertifikat', $kodeSertifikat);
-                                        }
-                                    }),
+                                        $tahunSekarang = now()->year;
+
+                                        $lastKode = Sertifikat::where('kode_sertifs_id', $state)
+                                            ->whereYear('created_at', $tahunSekarang)
+                                            ->latest('created_at')
+                                            ->first();
+
+                                        $nomor = $lastKode ? (intval(substr($lastKode->kode_sertifikat, 0, strpos($lastKode->kode_sertifikat, '/'))) + 1) : 1;
+                                        $nomorFormatted = str_pad($nomor, 3, '0', STR_PAD_LEFT);
+
+                                        $kodeSertifikat = "{$nomorFormatted}/{$kodeSertif->kode}/UKMCYBER/{$tahunSekarang}";
+
+                                        $set('kode_sertifikat', $kodeSertifikat);
+                                    }
+                                }),
+
                                 TextInput::make('kode_sertifikat')
                                     ->required()
-                                    ->label('Kode Sertifikat')
-                                    ->disabled(), 
+                                    ->hint('kode otomatis dibuat')
+                                    ->placeholder('Pilih kategori dan tunggu..')
+                                    ->label('Kode Sertifikat'),
+                                     
                             ]),
                         
 
@@ -78,7 +85,8 @@ class SertifikatResource extends Resource
                                 DatePicker::make('tanggal')
                                     ->required()
                                     ->label('Tanggal')
-                                    ->displayFormat('Y-m-d'),
+                                    ->displayFormat('Y-m-d')
+                                    ->default(now()),
                                 Select::make('keterangan')
                                     ->required()
                                     ->label('Keterangan')

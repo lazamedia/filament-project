@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
                   ->onDelete('cascade'); 
             $table->decimal('original_price'); 
             $table->decimal('sale_price');
-            $table->integer('stock');
             $table->string('image')->nullable(); 
             $table->string('link_drive')->nullable();
             $table->integer('sold')->default(0);

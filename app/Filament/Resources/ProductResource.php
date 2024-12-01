@@ -54,7 +54,7 @@ class ProductResource extends Resource
                 ->label('Link Drive')
                 ->url()
                 ->nullable(),
-            Select::make('kategori_produk_id')
+            Select::make('kategori_produks_id')
                 ->required()
                 ->relationship('kategoriproduk', 'name'),
             TextInput::make('original_price')

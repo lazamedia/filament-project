@@ -56,7 +56,7 @@ class ProductResource extends Resource
                 ->nullable(),
             Select::make('kategori_produk_id')
                 ->required()
-                ->relationship('kategoriProduk', 'name'),
+                ->relationship('kategoriproduk', 'name'),
             TextInput::make('original_price')
                 ->required()
                 ->minValue(0)

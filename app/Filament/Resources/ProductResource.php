@@ -78,7 +78,7 @@ class ProductResource extends Resource
         return $table->columns([
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('slug'),
-                TextColumn::make('kategori_produk.name'),
+                TextColumn::make('kategoriProduk.name'),
                 TextColumn::make('original_price')->sortable(),
                 TextColumn::make('sale_price')->sortable(),
                 TextColumn::make('sold')->sortable(),

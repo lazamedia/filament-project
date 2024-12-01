@@ -52,4 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
     
+    // Relasi antara User dan OrderList
+    public function orderlist()
+    {
+        return $this->hasMany(OrderList::class); // Pastikan menggunakan model 'OrderList'
+    }
+    
+        
 }

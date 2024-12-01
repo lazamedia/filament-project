@@ -12,6 +12,7 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 class Tabel extends BaseWidget
 {
     public function table(Table $table): Table
+    
     {
         return $table
             ->query(Article::query())
@@ -19,8 +20,7 @@ class Tabel extends BaseWidget
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
-                    ->limit(2)
-                    ->searchable()
+                    ->limit(10)
                     ->columnSpan(2),
 
                 Tables\Columns\TextColumn::make('created_at')

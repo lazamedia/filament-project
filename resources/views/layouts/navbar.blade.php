@@ -89,19 +89,18 @@
         .toggler-icon {
             width: 25px;
             height: 3px;
-            background-color: #FBA300; /* Ganti warna sesuai keinginan Anda */
+            background-color: #FBA300; 
             border-radius: 2px;
             transition: background-color 0.3s, transform 0.3s;
         }
 
-        /* Hover effect */
         .navbar-toggler:hover .toggler-icon {
-            background-color: #ffffff; /* Warna saat di-hover */
+            background-color: #ffffff; 
         }
 
-        /* Dropdown Menu Styling */
+
         .dropdown-menu {
-            background-color: #1C1E28; /* Warna latar belakang dropdown */
+            background-color: #1C1E28;
             border: none;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -109,7 +108,6 @@
             min-width: 200px;
         }
 
-        /* Dropdown Item Styling */
         .dropdown-item {
             color: #ffffff;
             padding: 10px;
@@ -119,7 +117,7 @@
 
         .dropdown-item:hover {
             background-color: #0f0b2200;
-            color: #FBA300 !important; /* Warna teks saat di-hover */
+            color: #FBA300 !important;
             transform: translateX(5px);
         }
         .dropdown-item i {
@@ -133,6 +131,17 @@
             display: flex;
             flex-direction: column;
         }
+        .dropdown-item button {
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            text-align: left;
+            color: #ffffff;
+            background-color: #0f0b2200;
+        }
+        .dropdown-item button:hover{
+            color: #FBA300;
+        }
         .dropdown-item strong {
             font-size: 13px;
             margin-bottom: 2px;
@@ -144,13 +153,12 @@
             margin: 0;
         }
 
-        /* Divider Styling */
         .dropdown-divider {
             border-top: 1px solid #FBA300;
             margin: 8px 0;
         }
 
-        /* Dropdown Toggle Link Styling */
+
         .nav-link.dropdown-toggle {
             color: #ffffff !important;
             transition: color 0.3s;
@@ -172,7 +180,7 @@
             display: block;
             opacity: 1;
         }
-        /* Mobile Styles */
+
         @media (max-width: 768px) {
             .auth-box {
                 flex-direction: row;
@@ -276,21 +284,22 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#" >
+                            <form class="dropdown-item d-flex align-items-center" style="margin-left:6px; " action="/logout" method="post" >
+                                @csrf
                                 <i class="bi bi-box-arrow-right"></i>
                                 <div>
-                                    <strong>Logout</strong>
+                                    <button type="submit" class="a"> Log Out</button>
                                     <span class="dropdown-desc">Sign out of your account</span>
                                 </div>
-                            </a>
+                            </form>
                         </li>
                     </ul>
                 </div>
-
-                <!-- Logout Form -->
-                <form id="logout-form" action="#" method="POST" style="display: none;">
+                {{-- <form action="/logout" method="post">
                     @csrf
-                </form>
+                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-left"></i> Log Out</button>
+                </form> --}}
+
             @else
                 <!-- If not logged in, show login and register links -->
                 <a href="{{ url('/login') }}" class="login">Masuk</a>

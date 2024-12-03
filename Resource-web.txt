@@ -1,0 +1,13 @@
+
+LIBRARY TERINSTAL
+    - Laravel Sanctum
+    - Laravel Filament
+    - Plugin Filament-Shield
+
+PERATURAN !!
+    - Gunakan dengan bijak dan hati-hati
+    - Jangan mengacak folder
+    - Pastikan kalo buat file dengan nama yang mudah dipahami tim
+    - Jangan lupa untuk mengupdate peraturan ini jika ada perubahan
+
+    

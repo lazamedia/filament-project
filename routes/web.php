@@ -16,13 +16,13 @@ Route::get('/panel', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/dashboard/logout', function () {
-    return redirect('/logout');
-});
+// Route::get('/dashboard/logout', function () {
+//     return redirect('/logout');
+// });
 
-Route::get('/dashboard/login', function () {
-    return redirect('/login');
-});
+// Route::get('/dashboard/login', function () {
+//     return redirect('/login');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/produk', [OrderController::class, 'index'])->name('products.index');

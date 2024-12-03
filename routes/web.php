@@ -16,6 +16,10 @@ Route::get('/panel', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/dashboard/logout', function () {
+    return redirect('/logout');
+});
+
 Route::get('/dashboard/login', function () {
     return redirect('/login');
 });
@@ -56,4 +60,4 @@ Route::get('/register', function () {
         
 // });
 
-Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin'])->prefix('dashboard');
+// Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin'])->prefix('/dashboard');

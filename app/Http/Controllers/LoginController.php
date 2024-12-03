@@ -91,7 +91,7 @@ class LoginController extends Controller
             if ($user->hasRole('super_admin')) {  
                 return redirect()->intended('/dashboard');
             } elseif ($user->hasRole('User')) { 
-                return redirect()->intended('/user');
+                return redirect()->intended('/');
             } else {
                 return redirect()->intended('/');
             }

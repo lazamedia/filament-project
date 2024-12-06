@@ -20,7 +20,7 @@ class Artikel extends BaseWidget
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
-                    ->limit(50)
+                    ->limit(35)
                     ->columnSpan(2),
 
                 // Tables\Columns\TextColumn::make('created_at')
@@ -32,7 +32,7 @@ class Artikel extends BaseWidget
                 Tables\Columns\TextColumn::make('user.name') 
                     ->label('Created By')
                     ->sortable()
-                    ->limit(10)
+                    ->limit(20)
                     ->columnSpan(1),
             ])
             ->defaultSort('created_at', 'desc'); 

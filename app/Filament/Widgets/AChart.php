@@ -5,7 +5,7 @@ namespace App\Filament\Widgets;
 use App\Models\Anggota;
 use Filament\Widgets\ChartWidget;
 
-class Chart extends ChartWidget
+class AChart extends ChartWidget
 {
     // protected static ?string $heading = 'Anggota Status Distribution';
 

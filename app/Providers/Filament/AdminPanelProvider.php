@@ -65,7 +65,6 @@ class AdminPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Log out'),
-                'Home' => MenuItem::make()->label('Home')->postAction(fn (): string => route('home'))->icon('heroicon-s-home'),
                 // ...
             ]);
     }

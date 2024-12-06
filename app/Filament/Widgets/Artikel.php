@@ -9,10 +9,10 @@ use Filament\Widgets\TableWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
 
-class Tabel extends BaseWidget
+class Artikel extends BaseWidget
 {
     public function table(Table $table): Table
-    
+
     {
         return $table
             ->query(Article::query())
@@ -23,11 +23,11 @@ class Tabel extends BaseWidget
                     ->limit(10)
                     ->columnSpan(2),
 
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->date()
-                    ->sortable()
-                    ->columnSpan(1), 
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->label('Created At')
+                //     ->date()
+                //     ->sortable()
+                //     ->columnSpan(1), 
 
                 Tables\Columns\TextColumn::make('user.name') 
                     ->label('Created By')

@@ -112,7 +112,8 @@ class AnggotaResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->headerActions([
-                ExportAction::make()->exporter(AnggotaExporter::class),
+                ExportAction::make()
+                    ->exporter(AnggotaExporter::class),
                 ImportAction::make()->importer(AnggotaImporter::class),
             ])
             ->bulkActions([

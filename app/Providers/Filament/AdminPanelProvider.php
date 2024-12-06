@@ -18,6 +18,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use Filament\Navigation\MenuItem;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -61,6 +62,11 @@ class AdminPanelProvider extends PanelProvider
                  \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
                 // FilamentSpatieRolesPermissionsPlugin::make()
                 ])
-            ->databaseNotifications();
+            ->databaseNotifications()
+            ->userMenuItems([
+                'logout' => MenuItem::make()->label('Log out'),
+                'Home' => MenuItem::make()->label('Home')->postAction(fn (): string => route('home'))->icon('heroicon-s-home'),
+                // ...
+            ]);
     }
 }

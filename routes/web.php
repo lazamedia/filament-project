@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Http\Request;
 
@@ -24,23 +22,8 @@ Route::get('/panel', function () {
 //     return redirect('/login');
 // });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/produk', [OrderController::class, 'index'])->name('products.index');
-    Route::post('/order/{productId}', [OrderController::class, 'store'])->name('orders.store');
-    Route::post('/order/{orderId}/upload-payment-proof', [OrderController::class, 'uploadPaymentProof'])->name('orders.uploadPaymentProof');
-    Route::get('/dashboard/orders', [OrderController::class, 'userOrders'])->name('dashboard.orders');
-});
 
-
-
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
-
-Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
-
-
-
-// LOGIN LOGUOT
+// LOGIN LOGUOT CUSTOM
 Route::get('/login', [LoginController::class, 'index' ] )->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate' ] );
 Route::post('/logout', [LoginController::class, 'logout' ] );

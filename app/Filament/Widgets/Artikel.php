@@ -20,7 +20,7 @@ class Artikel extends BaseWidget
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
-                    ->limit(10)
+                    ->limit(50)
                     ->columnSpan(2),
 
                 // Tables\Columns\TextColumn::make('created_at')

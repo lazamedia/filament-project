@@ -15,8 +15,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: sticky;
-        /* top: 0; */
+        position: fixed;
+        top: 0;
         width: 100%;
         z-index: 9999;
     }
@@ -223,9 +223,9 @@
 
 
 <!-- Navbar -->
-<header>
+{{-- <header>
     <p>haii</p>
-</header>
+</header> --}}
 <nav class="navbar  navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="{{ asset('img/cyber.png') }}" width="30px" alt=""></a>
